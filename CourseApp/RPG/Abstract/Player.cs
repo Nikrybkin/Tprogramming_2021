@@ -5,35 +5,9 @@ namespace CourseApp
     public abstract class Player : IPlayer
     {
         private readonly Random random = new Random();
-        private string[] arrayOfName = new string[20]
-        {
-            "Мерлин",
-            "Геральт",
-            "Эльдайн",
-            "Кейра",
-            "Мортра",
-            "Виллентретенмерт",
-            "Алёшка",
-            "Шон",
-            "Рикки",
-            "Кирито",
-            "Иоверт",
-            "Ширру",
-            "Керис",
-            "Хьялмар",
-            "Имлерих",
-            "Эредин",
-            "Кольгрим",
-            "Весемир",
-            "Лидия",
-            "Фукусья",
-        };
 
         public Player(string name, double health, int strength)
         {
-            health = random.Next(100, 130);
-            strength = random.Next(10, 20);
-            name = arrayOfName[random.Next(0, 20)];
             this.Name = name;
             this.Health = health;
             this.Strength = strength;
