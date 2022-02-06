@@ -6,6 +6,6 @@ namespace CourseApp
 
         double Health { get; set; }
 
-        double Strength { get; set; }
+        int Strength { get; set; }
     }
 }

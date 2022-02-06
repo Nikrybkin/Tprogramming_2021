@@ -4,20 +4,23 @@ namespace CourseApp
 
     public class Archer : Player
     {
-        public Archer(string name, double health, double strength)
+        public Archer(string name, double health, int strength)
         : base(name, health, strength)
         {
+            this.ClassPlayer = "Лучник";
+            this.UltimateName = "Ядовитый выстрел";
         }
 
-        public override double UseUlt()
+        public override int Ultimate(Player player, Player rival)
         {
-            if (IsFire == 0)
-            {
-                IsFire = 1;
-            }
+            UltimateDamage = 2;
+            Console.WriteLine($"{ClassPlayer} {Name} использовал ультимативную способность {UltimateName}!");
+            return Strength + UltimateDamage;
+        }
 
-            Console.WriteLine($"{Name} запустил огненные стрелы!");
-            return IsFire;
+        public override string InfoOutput()
+        {
+            return @$"Призвание: {ClassPlayer} ; Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца {Strength}";
         }
     }
 }

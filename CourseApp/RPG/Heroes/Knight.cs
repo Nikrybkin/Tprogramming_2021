@@ -4,16 +4,22 @@ namespace CourseApp
 
     public class Knight : Player
     {
-        public Knight(string name, int health, int strength)
+        public Knight(string name, double health, int strength)
         : base(name, health, strength)
         {
+            this.ClassPlayer = "Рыцарь чести";
+            this.UltimateName = "Ярость богов";
         }
 
-        public override double UseUlt()
+        public override int Ultimate(Player player, Player rival)
         {
-            Strength = Math.Floor(Strength * 1.3);
-            Console.WriteLine($"{Name} использовал усиление урона на 30%!");
-            return Strength;
+            Console.WriteLine($"{ClassPlayer} {Name} использовал ультимативную способность {UltimateName}!");
+            return UltimateDamage = (int)(Strength * 1.3);
+        }
+
+        public override string InfoOutput()
+        {
+            return @$"Призвание: {ClassPlayer} ; Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца {Strength}";
         }
     }
 }

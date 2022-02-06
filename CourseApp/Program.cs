@@ -6,8 +6,9 @@
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine($"Hello world");
-            Console.ReadLine();
+            int tournamentParticipants = 0;
+            Start start = new Start();
+            tournamentParticipants = start.StartTheTournament(tournamentParticipants);
         }
     }
 }

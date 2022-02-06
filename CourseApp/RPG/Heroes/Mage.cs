@@ -4,20 +4,24 @@ namespace CourseApp
 
     public class Mage : Player
     {
-        public Mage(string name, double health, double strength)
+        public Mage(string name, double health, int strength)
         : base(name, health, strength)
         {
+            this.ClassPlayer = "Маг гильдии";
+            this.UltimateName = "Превращение в камень";
         }
 
-        public override double UseUlt()
+        public override int Ultimate(Player player, Player rival)
         {
-            if (IsFrozen == 0)
-            {
-                IsFrozen = 1;
-            }
+            player.Afk = 2;
+            rival.Afk = 2;
+            Console.WriteLine($"{ClassPlayer} {Name} использовал имбу {UltimateName}!");
+            return 0;
+        }
 
-            Console.WriteLine($"{Name} заморозил оппонента!");
-            return IsFrozen;
+        public override string InfoOutput()
+        {
+            return @$"Призвание: {ClassPlayer} ; Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца {Strength}";
         }
     }
 }
