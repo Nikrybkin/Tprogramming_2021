@@ -73,6 +73,7 @@ namespace CourseApp
 
                     Player warrior = warriors[randomWarriorFirst];
                     Player warriorRival = warriors[randomWarriorSecond];
+                    Logger.LoggerOutput($"И тааак бой! {warrior.ClassPlayer}  {warrior.Name} Протиив {warriorRival.ClassPlayer}  {warriorRival.Name} ");
                 }
             }
         }
