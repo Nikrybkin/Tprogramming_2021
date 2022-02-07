@@ -39,12 +39,25 @@ namespace CourseApp
             return 0;
         }
 
-        public int AtTheAttack(Player warrior, Player warriorRival)
+        public int AtTheAttackWarrior(Player warrior, Player warriorRival)
         {
             if (warrior.Effect)
             {
                 warrior.Effect = false;
                 return DamageInfo = warrior.Ultimate(warrior, warriorRival);
+            }
+            else
+            {
+                return DamageInfo = Strength;
+            }
+        }
+
+        public int AtTheAttackWarriorRival(Player warrior, Player warriorRival)
+        {
+            if (warriorRival.Effect)
+            {
+                warriorRival.Effect = false;
+                return DamageInfo = warriorRival.Ultimate(warrior, warriorRival);
             }
             else
             {

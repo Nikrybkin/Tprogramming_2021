@@ -14,7 +14,7 @@ namespace CourseApp
         public override int Ultimate(Player player, Player rival)
         {
             Logger.LoggerOutput($"{ClassPlayer} {Name} использовал ультимативную способность {UltimateName}!");
-            return UltimateDamage = (int)(Strength * 1.3);
+            return Strength = (int)(Strength * 1.3);
         }
 
         public override string InfoOutput()
