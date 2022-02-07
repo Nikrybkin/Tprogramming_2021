@@ -8,8 +8,11 @@
         public static void Main(string[] args)
         {
             int tournamentParticipants = 0;
-            Start start = new Start();
+            Game start = new Game();
             tournamentParticipants = start.StartTheTournament(tournamentParticipants);
+            Arena arena = new Arena();
+            arena.Tournament(tournamentParticipants);
+            Console.ReadLine();
         }
     }
 }

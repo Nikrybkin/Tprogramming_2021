@@ -7,19 +7,19 @@ namespace CourseApp
         public Knight(string name, double health, int strength)
         : base(name, health, strength)
         {
-            this.ClassPlayer = "Рыцарь чести";
-            this.UltimateName = "Ярость богов";
+            ClassPlayer = "Рыцарь чести";
+            UltimateName = "Ярость богов";
         }
 
         public override int Ultimate(Player player, Player rival)
         {
-            Console.WriteLine($"{ClassPlayer} {Name} использовал ультимативную способность {UltimateName}!");
+            Logger.LoggerOutput($"{ClassPlayer} {Name} использовал ультимативную способность {UltimateName}!");
             return UltimateDamage = (int)(Strength * 1.3);
         }
 
         public override string InfoOutput()
         {
-            return @$"Призвание: {ClassPlayer} ; Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца {Strength}";
+            return $"Призвание: {ClassPlayer} ; Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца {Strength}";
         }
     }
 }

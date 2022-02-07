@@ -4,18 +4,19 @@ namespace CourseApp
 
     public abstract class Player : IPlayer
     {
-        private readonly Random random = new Random();
-
         public Player(string name, double health, int strength)
         {
-            this.Name = name;
-            this.Health = health;
-            this.Strength = strength;
-            this.Afk = 0;
-            this.Effect = false;
+            Name = name;
+            Health = health;
+            Strength = strength;
+            Afk = 0;
+            Effect = false;
+            DefaultHealth = health;
         }
 
         public int Afk { get; set; }
+
+        public double DefaultHealth { get; set; }
 
         public string Name { get; set; }
 
@@ -40,7 +41,7 @@ namespace CourseApp
 
         public int AtTheAttack(Player warrior, Player warriorRival)
         {
-            if (warrior.Effect == true)
+            if (warrior.Effect)
             {
                 warrior.Effect = false;
                 return DamageInfo = warrior.Ultimate(warrior, warriorRival);
@@ -53,7 +54,17 @@ namespace CourseApp
 
         public virtual string InfoOutput()
         {
-            return @$"Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца: {Strength}";
+            return $"Имя бойца: {Name} ; Здоровье бойца: {Health} ; Сила бойца: {Strength}";
+        }
+
+        public void GetDamage(int damage)
+        {
+            Health -= damage;
+        }
+
+        public void ResetHealth()
+        {
+            Health = DefaultHealth;
         }
     }
 }
