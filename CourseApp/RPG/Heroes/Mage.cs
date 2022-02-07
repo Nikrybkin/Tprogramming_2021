@@ -13,7 +13,7 @@ namespace CourseApp
 
         public override int Ultimate(Player player, Player rival)
         {
-            player.Afk = 0;
+            player.Afk = 2;
             rival.Afk = 2;
             Logger.LoggerOutput($"{ClassPlayer} {Name} использовал имбу {UltimateName}!");
             return 0;
