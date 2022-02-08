@@ -6,7 +6,7 @@ namespace CourseApp
     public class ListParticipants
     {
         private readonly Random random = new Random();
-        private string[] arrayOfName = new string[20]
+        private readonly string[] arrayOfName = new string[20]
         {
             "Мерлин",
             "Геральт",

@@ -22,7 +22,7 @@ namespace CourseApp
             Logger.LoggerOutput("Бойцы предстоящего турнира прямо перед нами!");
             foreach (Player item in warriors)
             {
-                Console.WriteLine($"Боец {item.Name}, {item.ClassPlayer}");
+                Logger.LoggerOutput($"Боец {item.Name}, {item.ClassPlayer}");
             }
 
             Logger.LoggerOutput("Наш турнир «Боевая единица» начинается!");
