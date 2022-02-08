@@ -18,7 +18,7 @@ namespace CourseApp
                 player.Afk = 1;
                 rival.Afk = 2;
             }
-            else
+            else if (rival.Effect)
             {
                 player.Afk = 2;
                 rival.Afk = 1;
