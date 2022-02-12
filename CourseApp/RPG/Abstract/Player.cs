@@ -4,72 +4,80 @@
 
     public abstract class Player : IPlayer
     {
-        private double health;
-        private double strength;
-        private Random random = new Random();
-        private double isFire = 0;
-        private double isFrozen = 0;
-
-        public Player(string name, double health, double strength)
+        public Player(string name, double health, int strength)
         {
-            health = random.Next(30, 50);
-            strength = random.Next(5, 10);
-            this.Name = name;
-            this.Health = health;
-            this.Strength = strength;
-            this.IsFrozen = isFrozen;
-            this.IsFire = isFire;
+            Name = name;
+            Health = health;
+            Strength = strength;
+            Afk = 0;
+            Effect = false;
+            DefaultHealth = health;
         }
+
+        public int Afk { get; set; }
+
+        public double DefaultHealth { get; set; }
 
         public string Name { get; set; }
 
-        public double Health
-        {
-            get
-            {
-                return health;
-            }
+        public string ClassPlayer { get; set; }
 
-            set
+        public bool Effect { get; set; }
+
+        public string UltimateName { get; set; }
+
+        public int UltimateDamage { get; set; }
+
+        public int InfoAboutDamage { get; set; }
+
+        public double Health { get; set; }
+
+        public int Strength { get; set; }
+
+        public virtual int Ultimate(Player player, Player rival)
+        {
+            return 0;
+        }
+
+        public int Attack(Player soldier, Player soldierRival)
+        {
+            if (soldier.Effect)
             {
-                if (value < 0)
-                {
-                    throw new InvalidOperationException("Не верное значение");
-                }
-                else
-                {
-                    health = value;
-                }
+                soldier.Effect = false;
+                return InfoAboutDamage = soldier.Ultimate(soldier, soldierRival);
+            }
+            else
+            {
+                return InfoAboutDamage = Strength;
             }
         }
 
-        public double Strength
+        public int AttackAntagonist(Player soldier, Player soldierRival)
         {
-            get
+            if (soldierRival.Effect)
             {
-                return strength;
+                soldierRival.Effect = false;
+                return InfoAboutDamage = soldierRival.Ultimate(soldier, soldierRival);
             }
-
-            set
+            else
             {
-                if (value < 0)
-                {
-                    throw new InvalidOperationException("Не верное значение");
-                }
-                else
-                {
-                    strength = value;
-                }
+                return InfoAboutDamage = Strength;
             }
         }
 
-        public virtual double IsFrozen { get; set; }
-
-        public virtual double IsFire { get; set; }
-
-        public virtual double UseUlt()
+        public virtual string Output()
         {
-            return strength;
+            return $"Имя: {Name} ; Здоровье: {Health} ; Сила: {Strength}";
+        }
+
+        public void Damage(int damage)
+        {
+            Health -= damage;
+        }
+
+        public void ResetHealth()
+        {
+            Health = DefaultHealth;
         }
     }
 }

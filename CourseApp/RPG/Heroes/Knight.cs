@@ -3,17 +3,23 @@
     using System;
 
     public class Knight : Player
-{
-    public Knight(string name, int health, int strength)
-    : base(name, health, strength)
     {
-    }
+        public Knight(string name, double health, int strength)
+        : base(name, health, strength)
+        {
+            ClassPlayer = "Рыцарь";
+            UltimateName = "Ярость";
+        }
 
-    public override double UseUlt()
-    {
-        Strength = Math.Floor(Strength * 1.30);
-        Console.WriteLine($"{Name} использовал усиление урона на 30%!");
-        return Strength;
+        public override int Ultimate(Player player, Player rival)
+        {
+            Logger.LoggerOutput($"{ClassPlayer} {Name} использовал суперспособность {UltimateName}!");
+            return Strength = (int)(Strength * 13);
+        }
+
+        public override string Output()
+        {
+            return $"Класс: {ClassPlayer}; Имя: {Name}; Здоровье: {Health}; Сила {Strength}";
+        }
     }
-}
 }

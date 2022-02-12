@@ -1,11 +1,11 @@
 ﻿namespace CourseApp
 {
     public interface IPlayer
-{
-    string Name { get; set; }
+    {
+        string Name { get; set; }
 
-    double Health { get; set; }
+        double Health { get; set; }
 
-    double Strength { get; set; }
-}
+        int Strength { get; set; }
+    }
 }
